@@ -15,3 +15,15 @@ span.badge {
 	position: relative;
 	right:0;
 }
+
+nav {
+    background-color: #9932CD;
+}
+
+footer.page-footer {
+    background-color: #9932CD;
+}
+
+.btn, .btn-large {
+    background-color: #26a69a;
+}
