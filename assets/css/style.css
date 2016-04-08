@@ -59,3 +59,15 @@ h2 {
 .page-footer p, .page-footer ul li a {
 	color: #fff;
 }
+
+#loginCancel {
+	margin-right: 15px;
+}
+
+#modalLogin {
+	overflow: hidden;
+}
+
+#modalLogin .modal-footer {
+	padding: 0px 35px;
+}

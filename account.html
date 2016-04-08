@@ -40,7 +40,7 @@
 				<ul class="right hide-on-med-and-down">
 					<li><a class="dropdown-button" href="#!" data-activates="dropdown1">Category<i class="material-icons right">arrow_drop_down</i></a></li>
 					<li><a href="question.html">Ask New Question</a></li>
-					<li><a href="account.html"><i class="material-icons">perm_identity</i></a></li>
+					<li><a id="account"><i class="material-icons">perm_identity</i></a></li>
 					<!--
 					<li><a href="#"><i class="material-icons">search</i></a></li>
 					-->
@@ -110,6 +110,7 @@
 					</div>
 				</div>
 			</form>
+			<!--
 			<form class="col s6" id="loginArea">
 				
 				<h1 class="text-darken-2">Login</h1>
@@ -134,6 +135,7 @@
 					</div>
 				</div>
 			</form>
+			-->
 		</div>
 		<div class="row" id="loggedIn" style="display:none;">
 			<div class="col s12" >
@@ -179,11 +181,44 @@
 			<p id="modal1Text"></p>
 		</div>
 		<div class="modal-footer">
-			<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+			<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Kewl</a>
 		</div>
 	</div>
 
+	<!-- Login Modal-->
+	<div id="modalLogin" class="modal">
+		<div class="modal-content">
+			<h4 id="modalLoginHeader"></h4>
+			<p id="modalLoginText">
+				<div class="row">
+					<div class="input-field col s12">
+						<i class="material-icons prefix">email</i>
+						<input id="loginEmail" type="email" class="validate">
+						<label for="email" data-error="please enter a valid email">Enter Your Email</label>
+					</div>
+					<div class="input-field col s12">
+						<i class="material-icons prefix">lock_outline</i>
+						<input id="loginPassword" type="password" class="validate">
+						<label for="icon_prefix">Choose A Password</label>
+					</div>
+				</div>
+			</p>
+		</div>
+		<div class="modal-footer">
+			<button class="btn waves-effect waves-light" type='button' id="loginSubmit">Submit
+				<i class="material-icons right">send</i>
+			</button>
+			<button class="btn waves-effect waves-light" type='button' id="loginCancel">Cancel
+				<i class="material-icons right">close</i>
+			</button>
+		</div>
+	</div>
+	
 	<script type="text/javascript" src="assets/js/home.js"></script>
+	<script type="text/javascript" src="assets/js/auth.js"></script>
 	<script type="text/javascript" src="assets/js/account.js"></script>
+	<script type="text/javascript" src="assets/js/login.js"></script>
+	<script type="text/javascript" src="assets/js/question.js"></script>
+
 </body>
 </html>

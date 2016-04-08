@@ -6,12 +6,16 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>Bootcamp Questions - Login</title>
+	<title>kwerries - Login!</title>
 	
+	<!-- Favicon image -->
+	<link rel="shortcut icon" type="image/ico" href="favicon.ico" />
 	<!-- Standard reset.css from http://meyerweb.com/eric/tools/css/reset/ -->
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-	<!-- Raleway Google Font -->
-	<link href='https://fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,300italic,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic' rel='stylesheet' type='text/css'>
+	<!-- Josefin Google Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,100,300,300italic,400italic,600,600italic,700,100italic|Josefin+Slab:400,400italic,600,600italic,700,300' rel='stylesheet' type='text/css'>
+	<!-- Materiallize - icons -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<!-- Materiallize - Compiled and minified CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
 	<!-- Our custom css file -->	
@@ -21,9 +25,168 @@
 	<script src="https://code.jquery.com/jquery-2.2.2.min.js" integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI=" crossorigin="anonymous"></script>
 	<!-- Materiallize - Compiled and minified JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+	<!-- link to firebase -->
+	<script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+	<!-- moment.js -->
+	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
 </head>
 <body>
+	<div class="navbar-fixed">
+		<nav>
+			<div class="nav-wrapper container">
+				<a href="index.html" class="brand-logo"><img id="headerLogo" src="assets/images/kwerries_logo.png" alt="kwerries logo"></a>
+				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+				<ul class="right hide-on-med-and-down">
+					<li><a class="dropdown-button" href="#!" data-activates="dropdown1">Category<i class="material-icons right">arrow_drop_down</i></a></li>
+					<li><a href="question.html">Ask New Question</a></li>
+					<li><a id="account"><i class="material-icons">perm_identity</i></a></li>
+					<!--
+					<li><a href="#"><i class="material-icons">search</i></a></li>
+					-->
+				</ul>
+				<ul id="dropdown1" class="dropdown-content">
+					<li><a href="#!">one</a></li>
+					<li><a href="#!">two</a></li>
+					<li><a href="#!">three</a></li>
+				</ul>
+				<ul class="side-nav" id="mobile-demo">
+					<li><a class="dropdown-button" href="#!" data-activates="dropdown1">Category<i class="material-icons right">arrow_drop_down</i></a></li>
+					<li><a href="question.html">Ask New Question</a></li>
+					<li><a id="account"><i class="material-icons">perm_identity</i></a></li>
+					<!--
+					<li><a href="#"><i class="material-icons">search</i></a></li>
+					-->
+				</ul>
+				<form class="purple lighten-3">
+					<div class="input-field">
+						<input id="search" type="search"/>
+						<label for="search"><i class="material-icons">search</i></label><i class="material-icons">close</i>
+					</div>
+				</form>
+			</div>
+		</nav>
+	</div>
+
+	<div class="container">
+		
+		<div class="row" id="accountArea">
+			<form class="col s6" id="loginArea">
+				<h1 class="text-darken-2">Login</h1>
+				<div class="row">
+					<div class="input-field col s12">
+						<i class="material-icons prefix">email</i>
+						<input id="loginEmail" type="email" class="validate">
+						<label for="email" data-error="please enter a valid email">Enter Your Email</label>
+					</div>
+					<div class="input-field col s12">
+						<i class="material-icons prefix">lock_outline</i>
+						<input id="loginPassword" type="password" class="validate">
+						<label for="icon_prefix">Choose A Password</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12">
+						<button class="btn waves-effect waves-light" type='button' id="loginSubmit">Submit
+							<i class="material-icons right">send</i>
+						</button>
+					</div>
+				</div>
+			</form>
+			<div class="col s6">
+				<h2 class="text-darken-2">New User?</h2>
+				<div class="row">
+					<div class="input-field col s12">
+						<a href="account.html" class="btn waves-effect waves-light" type='button' id="createAccount">Create an Account
+							<i class="material-icons right">send</i>
+						</a>
+					</div>
+				</div>	
+			</div>
+		</div>
+
+		<div class="row" id="loggedIn" style="display:none;">
+			<div class="col s12" >
+				<h1 id="loggedInHeader"></h1>
+				<button class="btn waves-effect waves-light" type='button' id="logOutButton">Log Out
+					<i class="material-icons right">send</i>
+				</button>
+			</div>
+		</div>
+
+	</div>
+	
+	<footer class="page-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col l6 s12">
+					<h5 class="">Footer Content</h5>
+					<p class="">You can use rows and columns here to organize your footer content.</p>
+				</div>
+				<div class="col l4 offset-l2 s12">
+					<h5 class="">Links</h5>
+					<ul>
+						<li><a class="" href="#!">Link 1</a></li>
+						<li><a class="" href="#!">Link 2</a></li>
+						<li><a class="" href="#!">Link 3</a></li>
+						<li><a class="" href="#!">Link 4</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="footer-copyright">
+			<div class="container">
+				© 2016 - kwerries.com
+				<a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+			</div>
+		</div>
+	</footer>
+	
+	<!-- Modal1 -->
+	<div id="modal1" class="modal">
+		<div class="modal-content">
+			<h4 id="modal1Header"></h4>
+			<p id="modal1Text"></p>
+		</div>
+		<div class="modal-footer">
+			<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Kewl</a>
+		</div>
+	</div>
+
+	<!-- Login Modal-->
+	<div id="modalLogin" class="modal">
+		<div class="modal-content">
+			<h4 id="modalLoginHeader"></h4>
+			<p id="modalLoginText">
+				<div class="row">
+					<div class="input-field col s12">
+						<i class="material-icons prefix">email</i>
+						<input id="loginEmail" type="email" class="validate">
+						<label for="email" data-error="please enter a valid email">Enter Your Email</label>
+					</div>
+					<div class="input-field col s12">
+						<i class="material-icons prefix">lock_outline</i>
+						<input id="loginPassword" type="password" class="validate">
+						<label for="icon_prefix">Choose A Password</label>
+					</div>
+				</div>
+			</p>
+		</div>
+		<div class="modal-footer">
+			<button class="btn waves-effect waves-light" type="button" data-target="modal1" id="loginSubmit">Submit
+				<i class="material-icons right">send</i>
+			</button>
+			<button class="btn waves-effect waves-light" type='button' id="loginCancel">Cancel
+				<i class="material-icons right">close</i>
+			</button>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="assets/js/home.js"></script>
+	<script type="text/javascript" src="assets/js/auth.js"></script>
+	<script type="text/javascript" src="assets/js/account.js"></script>
+	<script type="text/javascript" src="assets/js/login.js"></script>
+	<script type="text/javascript" src="assets/js/question.js"></script>
 	
 </body>
 </html>
