@@ -6,5 +6,7 @@ $(document).ready(function(){
 	// mobile menu
 	$(".button-collapse").sideNav();
 
+	// open modals
+	$('.modal-trigger').leanModal();
 
 });

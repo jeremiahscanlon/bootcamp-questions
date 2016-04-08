@@ -12,7 +12,7 @@ function newQuestion(var1, var2, var3){
 		dateTime: var3
 	});
 
-}
+};
 
 // Capture #submit Button Click
 $("#questionSubmit").on("click", function() {
@@ -36,7 +36,7 @@ $("#questionSubmit").on("click", function() {
 
 	// Don't refresh the page!
 	return false;
-})
+});
 
 
 
