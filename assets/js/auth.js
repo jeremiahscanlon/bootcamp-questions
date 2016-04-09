@@ -4,7 +4,7 @@
 // ===============================================================
 
 // make sure the file loads
-console.log('auth.js loaded.');
+//console.log('auth.js loaded.');
 
 // Create a callback which logs the current auth state
 function authDataCallback(authData) {
@@ -16,6 +16,7 @@ function authDataCallback(authData) {
     $('#loggedInHeader').text('Welcome back, '+loginEmail);
     $('#accountArea').hide();
     $('#loggedIn').show();
+    $('#questionName').val(userID);
 
   } else {
 

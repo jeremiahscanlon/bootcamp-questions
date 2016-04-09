@@ -102,6 +102,14 @@
 						</a>
 					</div>
 				</div>	
+				<h2 class="text-darken-2">New Password?</h2>
+				<div class="row">
+					<div class="input-field col s12">
+						<button class="btn waves-effect waves-light" type='button' id="passwordReset">Reset Password
+							<i class="material-icons right">send</i>
+						</button>
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -157,26 +165,24 @@
 	<div id="modalLogin" class="modal">
 		<div class="modal-content">
 			<h4 id="modalLoginHeader"></h4>
-			<p id="modalLoginText">
-				<div class="row">
-					<div class="input-field col s12">
-						<i class="material-icons prefix">email</i>
-						<input id="loginEmail" type="email" class="validate">
-						<label for="email" data-error="please enter a valid email">Enter Your Email</label>
-					</div>
-					<div class="input-field col s12">
-						<i class="material-icons prefix">lock_outline</i>
-						<input id="loginPassword" type="password" class="validate">
-						<label for="icon_prefix">Choose A Password</label>
-					</div>
+			<div class="row" id="modalLoginText">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">email</i>
+					<input id="loginEmail" type="email" class="validate">
+					<label for="email" data-error="please enter a valid email">Enter Your Email</label>
 				</div>
-			</p>
+				<div class="input-field col s12">
+					<i class="material-icons prefix">lock_outline</i>
+					<input id="loginPassword" type="password" class="validate">
+					<label for="icon_prefix">Choose A Password</label>
+				</div>
+			</div>
 		</div>
 		<div class="modal-footer">
 			<button class="btn waves-effect waves-light" type="button" data-target="modal1" id="loginSubmit">Submit
 				<i class="material-icons right">send</i>
 			</button>
-			<button class="btn waves-effect waves-light" type='button' id="loginCancel">Cancel
+			<button class="btn waves-effect waves-light" type='button' id="cancel">Cancel
 				<i class="material-icons right">close</i>
 			</button>
 		</div>

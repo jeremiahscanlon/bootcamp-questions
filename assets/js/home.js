@@ -1,10 +1,10 @@
 // ===============================================================
-// This file checks to see if there is a client currently 
-// logged in or not and changes functionality accordingly
+// This file loads some universal variables and general
+// website functionality
 // ===============================================================
 
 // make sure the file loads
-console.log('home.js loaded.');
+//console.log('home.js loaded.');
 
 // mobile menu
 $(".button-collapse").sideNav();
@@ -22,7 +22,7 @@ function loadUrl(newLocation){
 }
 
 // create the firebase db connection
-var db = new Firebase ('bootcamp-questions.firebaseIO.com');
+var db = new Firebase ('kwerries.firebaseIO.com');
 
 // creates a universal variable that will hold the current user id
 // if anyone is logged in

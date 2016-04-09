@@ -3,7 +3,7 @@
 // ===============================================================
 
 // make sure the file loads
-console.log('login.js loaded.');
+//console.log('login.js loaded.');
 
 // if someone is logged in forward page to account.html
 if(document.URL.indexOf("login.html") >= 0 && userID){ 
@@ -36,30 +36,64 @@ function logIn(email, pass){
 	});
 }
 
+function passwordReset(email){
+	db.resetPassword({
+		email : email
+	}, function(error) {
+		if (error === null) {
+			console.log("Password reset email sent successfully");
+		} else {
+			console.log("Error sending password reset email:", error);
+		}
+	});
+}
+
 $("#loginSubmit").on("click", function() {
 
-	console.log('clicked the Login button!');
+	console.log('clicked the modal login button!');
 
 	// Capture User Inputs and store into variables
 	var email = $('#loginEmail').val().trim();
 	var pass = $('#loginPassword').val().trim();
 
-
-	// clear the question boxes
-	$('#loginEmail').val('');
-	$('#loginPassword').val('');
-	// send the variables through the function that writes them to the firebase
-	logIn(email, pass);
+	if (pass) {
+		// clear the question boxes
+		$('#loginEmail').val('');
+		$('#loginPassword').val('');
+		// send the variables through the function that writes them to the firebase
+		logIn(email, pass);
+	} else {
+		$('#loginEmail').val('');
+		passwordReset(email);
+	};
 
 	// Don't refresh the page!
 	return false;
 });
 
-$("#loginCancel").on("click", function() {
+$("#cancel").on("click", function() {
 
-	console.log('clicked the Login button!');
+	console.log('clicked the cancel login button!');
 	$('#modalLogin').closeModal();
-	loadUrl('index.html');
+
+	// Don't refresh the page!
+	return false;
+});
+
+$("#passwordReset").on("click", function() {
+
+	console.log('clicked the password reset button!');
+	$('#modalLoginHeader').text('Reset your Password');
+
+	$('#modalLoginText').html(	'<div class="row">'+
+									'<div class="input-field col s12">'+
+										'<i class="material-icons prefix">email</i>'+
+										'<input id="loginEmail" type="email" class="validate">'+
+										'<label for="email" data-error="please enter a valid email">Enter Your Email</label>'+
+									'</div>'+
+								'</div>'
+								);
+	$('#modalLogin').openModal();
 
 	// Don't refresh the page!
 	return false;

@@ -4,11 +4,7 @@
 // ===============================================================
 
 // make sure the file loads
-console.log('account.js loaded.');
-
-// check if the referrer page was login
-var refer = document.referrer;
-console.log('refer: '+ refer);
+//console.log('account.js loaded.');
 
 // if it's the account page and you came from the login page open successful login modal
 if(document.URL.indexOf("account.html") >= 0 && document.referre){ 
