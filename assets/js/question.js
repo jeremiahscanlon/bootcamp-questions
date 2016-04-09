@@ -26,7 +26,7 @@ $("#questionSubmit").on("click", function() {
 	var questionAuthor = userID;
 	var dateTime = moment().format('YYYY-MM-DD HH:mm:ss');
 	console.log(question);
-	console.log(questionName);
+	console.log(questionAuthor);
 	console.log(dateTime);
 
 	// clear the question boxes

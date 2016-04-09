@@ -11,12 +11,22 @@ function authDataCallback(authData) {
   if (authData) {
 
     console.log("User " + authData.uid + " is logged in with " + authData.provider);
-    var loginEmail = authData.password.email;
+
+    // set the universal variable userID to the active user ID
     userID = authData.uid;
-    $('#loggedInHeader').text('Welcome back, '+loginEmail);
+
+    var queryURL = 'https://kwerries.firebaseIO.com/users/'+ userID +'.json';
+
+    $.ajax({url: queryURL, method: 'GET'})
+    .done(function(response) {
+      activeEmail = response.email;
+      activeFirst = response.first;
+      activeLast = response.last;
+      $('#loggedInHeader').text('Welcome back, '+activeFirst+' '+activeLast);
+      $('#questionName').val(activeFirst+' '+activeLast);
+    });
     $('#accountArea').hide();
     $('#loggedIn').show();
-    $('#questionName').val(userID);
 
   } else {
 
@@ -31,12 +41,12 @@ db.onAuth(authDataCallback);
 
 // Account link buton sends to login or account page depending on auth status
 
-  if (userID) {
-    $('#account').on('click',function(){
-      loadUrl('account.html');
-    });
-  } else {
-    $('#account').on('click',function(){
-      loadUrl('login.html');
-    });
-  }
+if (userID) {
+  $('#account').on('click',function(){
+    loadUrl('account.html');
+  });
+} else {
+  $('#account').on('click',function(){
+    loadUrl('login.html');
+  });
+}

@@ -24,6 +24,11 @@ function loadUrl(newLocation){
 // create the firebase db connection
 var db = new Firebase ('kwerries.firebaseIO.com');
 
-// creates a universal variable that will hold the current user id
-// if anyone is logged in
+// for creating users
+var dbUsers = db.child('users');
+
+// create universal variables that will hold the current user info
 var userID ='';
+var activeEmail = '';
+var activeFirst = '';
+var activeLast = '';

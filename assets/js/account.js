@@ -6,19 +6,11 @@
 // make sure the file loads
 //console.log('account.js loaded.');
 
-// if it's the account page and you came from the login page open successful login modal
-if(document.URL.indexOf("account.html") >= 0 && document.referre){ 
-	$('#modal1Header').html('Login Sucessful');
-	$('#modal1Text').html(loginEmail+' has been successfully logged in!');
-	$('#modal1').openModal();
-}
+function newAuth(email, first, last, pass){
 
-function newUser(email, first, last, pass){
 	db.createUser({
 		email    : email,
-		password : pass,
-		firstName: first,
-		lastName : last
+		password : pass
 	}, function(error, userData) {
 		if (error) {
 			console.log("Error creating user:", error);
@@ -27,11 +19,27 @@ function newUser(email, first, last, pass){
 			$('#modal1').openModal();
 		} else {
 			console.log("Successfully created user account with uid:", userData.uid);
+			userID = userData.uid;
+			newUser(userID, email, first, last);
 			$('#modalLoginHeader').text('Create User Sucessful. Please Login.');
 			$('#modalLogin').openModal();
 		}
 	});
+
 };
+
+function newUser(userid, email, first, last){
+
+	var userObject = 	'{"' + userid +'":{'+
+								'"email":"'+ email +'",'+
+								'"first":"'+ first +'",'+
+								'"last":"'+ last +'"'+
+							'}'+
+						'}';
+	dbUsers.set(JSON.parse(userObject));
+
+};
+
 
 // Capture #submit Button Click
 $("#registerSubmit").on("click", function() {
@@ -53,7 +61,7 @@ $("#registerSubmit").on("click", function() {
 		$('#registerPassword').val('');
 		$('#registerPasswordConfirm').val('');
 		// send the variables through the function that writes them to the firebase
-		newUser(email, first, last, pass);
+		newAuth(email, first, last, pass);
 	} else {
 		$('#registerPassword').val('')
 		$('#registerPasswordConfirm').val('')
