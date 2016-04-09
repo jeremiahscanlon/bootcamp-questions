@@ -8,7 +8,7 @@
 // function that pushes new kwerries to the database
 function newQuestion(var1, var2, var3){
 
-	db.push({
+	dbQuestions.push({
 		questionText: var1,
 		user: var2,
 		dateTime: var3

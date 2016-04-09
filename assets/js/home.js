@@ -27,6 +27,9 @@ var db = new Firebase ('kwerries.firebaseIO.com');
 // for creating users
 var dbUsers = db.child('users');
 
+// for creating questions
+var dbQuestions = db.child('questions');
+
 // create universal variables that will hold the current user info
 var userID ='';
 var activeEmail = '';
