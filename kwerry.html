@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>kwerries - Your Account!</title>
+	<title>kwerries - Ask a new question and ye shall receive an answer!</title>
 	
 	<!-- Favicon image -->
 	<link rel="shortcut icon" type="image/ico" href="favicon.ico" />
@@ -66,65 +66,42 @@
 
 	<div class="container">
 		
-		<div class="row" id="accountArea">
-			<form class="col s6" id="registerArea">
-				
-				<h1 class="text-darken-2">Create An Account</h1>
-				
+		<div class="row createkwerry">
+			<form class="col s12">
 				<div class="row">
 					<div class="input-field col s12">
-						<i class="material-icons prefix">email</i>
-						<input id="registerEmail" type="email" class="validate">
-						<label for="email" data-error="please enter a valid email">Enter Your Email</label>
+						<i class="material-icons prefix"><img src='assets/images/kwerries-square.png' alt='Square kwerry' class='smallSquareLogo'></i>
+						<textarea id="question" class="materialize-textarea" length="500"></textarea>
+						<label for="icon_prefix2" >type your kwerry</label>
 					</div>
-					<div class="input-field col s12">
+					<div class="input-field col s6">
 						<i class="material-icons prefix">account_circle</i>
-						<input id="registerFirstName" type="text" class="validate">
-						<label for="icon_prefix" >Enter Your First Name</label>
+						<input disabled id="questionName" type="text" class="validate">
+						<label for="disabled" ></label>
 					</div>
-					<div class="input-field col s12">
-						<i class="material-icons prefix"></i>
-						<input id="registerLastName" type="text" class="validate">
-						<label for="icon_prefix" >Enter Your Last Name</label>
-					</div>
-					<div class="input-field col s12">
-						<i class="material-icons prefix">lock_outline</i>
-						<input id="registerPassword" type="password" class="validate">
-						<label for="icon_prefix">Choose A Password</label>
-					</div>
-					<div class="input-field col s12">
-						<i class="material-icons prefix"></i>
-						<input id="registerPasswordConfirm" type="password" class="validate">
-						<label for="icon_prefix" >Confirm Password</label>
-					</div>
-				</div>
-				<div class="row">
-					<div class="input-field col s12">
-						<button class="btn waves-effect waves-light right" type='button' id="registerSubmit">Submit
+					<div class="input-field col s6">
+						<button class="btn waves-effect waves-light right" type='button' id="questionSubmit">Submit
 							<i class="material-icons right">send</i>
 						</button>
 					</div>
 				</div>
 			</form>
-			<div class="col s6">
-				<h2 class="text-darken-2">Exiting User?</h2>
-				<div class="row">
-					<div class="input-field col s12">
-						<a href="login.html" class="btn waves-effect waves-light" type='button' id="createAccount">Login
-							<i class="material-icons right">send</i>
-						</a>
-					</div>
-				</div>
-			</div>
 		</div>
-		<div class="row" id="loggedIn" style="display:none;">
-			<div class="col s12" >
-				<h1 id="loggedInHeader"></h1>
-				<button class="btn waves-effect waves-light" type='button' id="logOutButton">Log Out
-					<i class="material-icons right">send</i>
-				</button>
-			</div>
-		</div>
+
+
+		<h1>recently submitted kwerries</h1>
+
+		<table class="highlight">
+			<thead>
+				<tr>
+					<th data-field="question"><img src='assets/images/kwerries-square.png' alt='Square kwerry' class='smallSquareLogo'> the kwerry</th>
+					<th data-field="name">by</th>
+					<th data-field="dateTime">date/time</th>
+					<th data-field="dateTime">answers</th>
+				</tr>
+			</thead>
+			<tbody id="kwerryTableRecent"></tbody>
+		</table>
 	</div>
 	
 	<footer class="page-footer">

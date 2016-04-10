@@ -27,6 +27,7 @@ footer.page-footer {
 .btn, .btn-large {
     background-color: #00a651;
     color:#fff;
+    text-transform: lowercase;
 }
 
 nav form {
@@ -70,4 +71,13 @@ h2 {
 
 #modalLogin .modal-footer {
 	padding: 0px 35px;
+}
+
+.smallSquareLogo {
+	max-width: 30px;
+	height: auto;
+}
+
+.createkwerry {
+	margin-top: 25px;
 }
