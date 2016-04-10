@@ -35,8 +35,9 @@ var userID ='';
 var activeEmail = '';
 var activeFirst = '';
 var activeLast = '';
+var recentKwerries = [];
 
 // get the current page URL
-var url = window.location.href
+var url = window.location.href;
 var argument = url.split('?')[1];
 console.log(argument);
