@@ -15,6 +15,9 @@ $('.modal-trigger').leanModal();
 // Materialize character counter
 $('input#input_text, textarea#textarea1').characterCounter();
 
+// paralax initialization
+$('.parallax').parallax();
+
 // function to load a new page
 function loadUrl(newLocation){
 	window.location = newLocation;
