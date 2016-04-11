@@ -74,7 +74,7 @@ dbQuestions.limitToLast(20).on("value", function(snapshot, prechildKey){
 				userFirst = response.first;
 				userLast = response.last;
 				
-				$('#kwerryTableRecent').append(	'<tr class="recentKwerry" data-id="'+kwerryID+'">'+
+				$('#kwerryTableRecent').append(	'<tr class="recentKwerry" data-firebaseID="'+kwerryID+'">'+
 													'<td>'+userFirst+' '+userLast+'</td>'+
 													'<td>'+kwerryTitle+'</td>'+
 													'<td>'+kwerry+'</td>'+
