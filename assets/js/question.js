@@ -6,12 +6,13 @@
 //console.log('question.js loaded.');
 
 // function that pushes new kwerries to the database
-function newQuestion(var1, var2, var3){
+function newQuestion(var1, var2, var3, var4){
 
 	var newkwerry = dbQuestions.push({
-		questionText: var1,
-		user: var2,
-		dateTime: var3
+		questionTitle: var1,
+		questionText: var2,
+		user: var3,
+		dateTime: var4
 	});
 
 	var newQuestionKey = newkwerry.key();
@@ -25,6 +26,7 @@ $("#questionSubmit").on("click", function() {
 	console.log('clicked the button!');
 
 	// Capture User Inputs and store into variables
+	var question = $('#title').val().trim();
 	var question = $('#question').val().trim();
 	var questionAuthor = userID;
 	var dateTime = moment().format('YYYY-MM-DD HH:mm');
@@ -33,10 +35,11 @@ $("#questionSubmit").on("click", function() {
 	console.log(dateTime);
 
 	// clear the question boxes
+	$('#title').val('');
 	$('#question').val('');
 
 	// send the variables through the function that writes them to the firebase
-	newQuestion(question, questionAuthor, dateTime);
+	newQuestion(title, question, questionAuthor, dateTime);
 
 	// Don't refresh the page!
 	return false;
@@ -46,9 +49,12 @@ dbQuestions.limitToLast(20).on("value", function(snapshot, prechildKey){
 	var kwerryResults = snapshot.val();
 	var recentKwerries = [];
 
+	$('#kwerryTableRecent').empty();
+	
 	$.each( kwerryResults, function(key,value){	
 		recentKwerries.push(key);
 	});
+
 
 	for (var i = 0; i < recentKwerries.length; i++) {
 		var kwerryID = recentKwerries[i]
@@ -68,8 +74,8 @@ dbQuestions.limitToLast(20).on("value", function(snapshot, prechildKey){
 				userLast = response.last;
 				
 				$('#kwerryTableRecent').append(	'<tr class="recentKwerry" data-id="'+kwerryID+'">'+
-													'<td>'+kwerry+'</td>'+
 													'<td>'+userFirst+' '+userLast+'</td>'+
+													'<td>'+kwerry+'</td>'+
 													'<td>'+kwerryDateTime+'</td>'+
 													'<td><span class="new badge">4</span></td>'+
 												'</tr>'

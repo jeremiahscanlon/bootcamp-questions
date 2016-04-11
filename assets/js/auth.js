@@ -24,6 +24,7 @@ function authDataCallback(authData) {
       activeLast = response.last;
       $('#loggedInHeader').text('Welcome back, '+activeFirst+' '+activeLast);
       $('#questionName').val(activeFirst+' '+activeLast);
+      $('#replyName').val(activeFirst+' '+activeLast);
     });
     $('#accountArea').hide();
     $('#loggedIn').show();

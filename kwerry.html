@@ -64,15 +64,20 @@
 		</nav>
 	</div>
 
-	<div class="container">
+	<div class="container" id="newKwerry" >
 		
 		<div class="row createkwerry">
 			<form class="col s12">
 				<div class="row">
+					<div class="input-field col s6">
+			          <i class="material-icons prefix">mode_edit</i>
+			          <input id="title" type="text" class="validate">
+			          <label for="title">kwerry title</label>
+			        </div>
 					<div class="input-field col s12">
 						<i class="material-icons prefix"><img src='assets/images/kwerries-square.png' alt='Square kwerry' class='smallSquareLogo'></i>
 						<textarea id="question" class="materialize-textarea" length="500"></textarea>
-						<label for="icon_prefix2" >type your kwerry</label>
+						<label for="question" >type your kwerry</label>
 					</div>
 					<div class="input-field col s6">
 						<i class="material-icons prefix">account_circle</i>
@@ -94,6 +99,23 @@
 		<table class="highlight">
 			<thead>
 				<tr>
+					<th data-field="name">by</th>
+					<th data-field="question"><img src='assets/images/kwerries-square.png' alt='Square kwerry' class='smallSquareLogo'> the kwerry</th>
+					<th data-field="dateTime">date/time</th>
+					<th data-field="dateTime">answers</th>
+				</tr>
+			</thead>
+			<tbody id="kwerryTableRecent"></tbody>
+		</table>
+	</div>
+
+	<div class="container" id="singleKwerry" style="display: none;">
+		
+		<h1>recently submitted kwerries</h1>
+
+		<table class="highlight">
+			<thead>
+				<tr>
 					<th data-field="question"><img src='assets/images/kwerries-square.png' alt='Square kwerry' class='smallSquareLogo'> the kwerry</th>
 					<th data-field="name">by</th>
 					<th data-field="dateTime">date/time</th>
@@ -102,6 +124,28 @@
 			</thead>
 			<tbody id="kwerryTableRecent"></tbody>
 		</table>
+
+		<div class="row createreply">
+			<form class="col s12">
+				<div class="row">
+					<div class="input-field col s12">
+						<i class="material-icons prefix">mode_edit</i>
+						<textarea id="reply" class="materialize-textarea" length="500"></textarea>
+						<label for="icon_prefix2" >type your kwerry</label>
+					</div>
+					<div class="input-field col s6">
+						<i class="material-icons prefix">account_circle</i>
+						<input disabled id="replyName" type="text" class="validate">
+						<label for="disabled" ></label>
+					</div>
+					<div class="input-field col s6">
+						<button class="btn waves-effect waves-light right" type='button' id="questionSubmit">Submit
+							<i class="material-icons right">send</i>
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
 	</div>
 	
 	<footer class="page-footer">
