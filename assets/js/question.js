@@ -26,7 +26,7 @@ $("#questionSubmit").on("click", function() {
 	console.log('clicked the button!');
 
 	// Capture User Inputs and store into variables
-	var question = $('#title').val().trim();
+	var title = $('#questionTitle').val().trim();
 	var question = $('#question').val().trim();
 	var questionAuthor = userID;
 	var dateTime = moment().format('YYYY-MM-DD HH:mm');
@@ -35,7 +35,7 @@ $("#questionSubmit").on("click", function() {
 	console.log(dateTime);
 
 	// clear the question boxes
-	$('#title').val('');
+	$('#questionTitle').val('');
 	$('#question').val('');
 
 	// send the variables through the function that writes them to the firebase
@@ -50,7 +50,7 @@ dbQuestions.limitToLast(20).on("value", function(snapshot, prechildKey){
 	var recentKwerries = [];
 
 	$('#kwerryTableRecent').empty();
-	
+
 	$.each( kwerryResults, function(key,value){	
 		recentKwerries.push(key);
 	});
@@ -63,6 +63,7 @@ dbQuestions.limitToLast(20).on("value", function(snapshot, prechildKey){
 
 	    $.ajax({url: queryURL, method: 'GET'})
 	    .done(function(response) {
+		    var kwerryTitle = response.questionTitle;
 		    var kwerry = response.questionText;
 		    var kwerryDateTime = response.dateTime;
 		    var kwerryUserID = response.user;
@@ -75,6 +76,7 @@ dbQuestions.limitToLast(20).on("value", function(snapshot, prechildKey){
 				
 				$('#kwerryTableRecent').append(	'<tr class="recentKwerry" data-id="'+kwerryID+'">'+
 													'<td>'+userFirst+' '+userLast+'</td>'+
+													'<td>'+kwerryTitle+'</td>'+
 													'<td>'+kwerry+'</td>'+
 													'<td>'+kwerryDateTime+'</td>'+
 													'<td><span class="new badge">4</span></td>'+
@@ -85,10 +87,36 @@ dbQuestions.limitToLast(20).on("value", function(snapshot, prechildKey){
 	}
 });
 
-	// var queryURL = 'https://kwerries.firebaseIO.com/questions.json';
+if (document.URL.indexOf("kwerry.html") >= 0 && argument) {
+	$('#newKwerry').hide();
+    $('#singleKwerry').show();
 
- //    $.ajax({url: queryURL, method: 'GET'})
- //    .done(function(response) {
- //      console.log(response);
- //    });
+    kwerryID = argument;
+    var queryURL = 'https://kwerries.firebaseIO.com/questions/'+ kwerryID +'.json';
+
+    $.ajax({url: queryURL, method: 'GET'})
+    .done(function(response) {
+	    kwerryTitle = response.questionTitle;
+	    $('#kwerryTitle').text(kwerryTitle);
+
+	    kwerry = response.questionText;
+	    kwerryDateTime = response.dateTime;
+	    kwerryUserID = response.user;
+	    
+	    var queryURL2 = 'https://kwerries.firebaseIO.com/users/'+ kwerryUserID +'.json';
+
+	    $.ajax({url: queryURL2, method: 'GET'})
+	    .done(function(response) {
+			userFirst = response.first;
+			userLast = response.last;
+			
+			$('#singleKwerryTable').append(	'<tr class="singleKwerry" data-id="'+kwerryID+'">'+
+												'<td>'+userFirst+' '+userLast+'</td>'+
+												'<td>'+kwerry+'</td>'+
+												'<td>'+kwerryDateTime+'</td>'+
+											'</tr>'
+											);
+	    });
+    });
+}
 

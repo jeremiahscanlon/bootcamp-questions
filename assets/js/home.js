@@ -44,3 +44,8 @@ var recentKwerries = [];
 var url = window.location.href;
 var argument = url.split('?')[1];
 console.log(argument);
+
+$('.recentKwerry').on('click', function(){
+	var kwerryID = $('this').data("firebaseID");
+	console.log(kwerryID);
+});

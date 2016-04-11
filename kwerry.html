@@ -70,14 +70,14 @@
 			<form class="col s12">
 				<div class="row">
 					<div class="input-field col s6">
-			          <i class="material-icons prefix">mode_edit</i>
-			          <input id="title" type="text" class="validate">
-			          <label for="title">kwerry title</label>
-			        </div>
+						<i class="material-icons prefix">account_circle</i>
+						<input id="questionTitle" type="text" class="validate">
+						<label for="questionTitle">kwerry title</label>
+					</div>
 					<div class="input-field col s12">
 						<i class="material-icons prefix"><img src='assets/images/kwerries-square.png' alt='Square kwerry' class='smallSquareLogo'></i>
-						<textarea id="question" class="materialize-textarea" length="500"></textarea>
-						<label for="question" >type your kwerry</label>
+						<textarea id="reply" class="materialize-textarea" length="500"></textarea>
+						<label for="reply" >type your kwerry</label>
 					</div>
 					<div class="input-field col s6">
 						<i class="material-icons prefix">account_circle</i>
@@ -85,7 +85,7 @@
 						<label for="disabled" ></label>
 					</div>
 					<div class="input-field col s6">
-						<button class="btn waves-effect waves-light right" type='button' id="questionSubmit">Submit
+						<button class="btn waves-effect waves-light right" type='button' id="replySubmit">Submit
 							<i class="material-icons right">send</i>
 						</button>
 					</div>
@@ -100,7 +100,8 @@
 			<thead>
 				<tr>
 					<th data-field="name">by</th>
-					<th data-field="question"><img src='assets/images/kwerries-square.png' alt='Square kwerry' class='smallSquareLogo'> the kwerry</th>
+					<th data-field="name">title</th>
+					<th data-field="question"><img src='assets/images/kwerries-square.png' alt='Square kwerry' class='smallSquareLogo'></th>
 					<th data-field="dateTime">date/time</th>
 					<th data-field="dateTime">answers</th>
 				</tr>
@@ -111,18 +112,17 @@
 
 	<div class="container" id="singleKwerry" style="display: none;">
 		
-		<h1>recently submitted kwerries</h1>
+		<h1 id="kwerryTitle"></h1>
 
 		<table class="highlight">
 			<thead>
 				<tr>
-					<th data-field="question"><img src='assets/images/kwerries-square.png' alt='Square kwerry' class='smallSquareLogo'> the kwerry</th>
 					<th data-field="name">by</th>
+					<th data-field="question"><img src='assets/images/kwerries-square.png' alt='Square kwerry' class='smallSquareLogo'></th>
 					<th data-field="dateTime">date/time</th>
-					<th data-field="dateTime">answers</th>
 				</tr>
 			</thead>
-			<tbody id="kwerryTableRecent"></tbody>
+			<tbody id="singleKwerryTable"></tbody>
 		</table>
 
 		<div class="row createreply">
@@ -131,7 +131,7 @@
 					<div class="input-field col s12">
 						<i class="material-icons prefix">mode_edit</i>
 						<textarea id="reply" class="materialize-textarea" length="500"></textarea>
-						<label for="icon_prefix2" >type your kwerry</label>
+						<label for="icon_prefix2" >type your reply</label>
 					</div>
 					<div class="input-field col s6">
 						<i class="material-icons prefix">account_circle</i>
